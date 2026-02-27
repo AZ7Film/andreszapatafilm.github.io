@@ -6,88 +6,67 @@
     <title>Andrés Zapata | Director & DP</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, sans-serif; line-height: 1.6; }
+        body { background-color: #000; color: #fff; font-family: 'Helvetica Neue', Helvetica, sans-serif; line-height: 1.6; scroll-behavior: smooth; }
         
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1492691523569-de8128ee7303?q=80&w=2070');
-            background-size: cover;
-            background-position: center;
-            padding: 20px;
-        }
-
-        h1 { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 200; letter-spacing: 0.8rem; text-transform: uppercase; margin-bottom: 10px; }
-        .tagline { font-size: 0.7rem; letter-spacing: 0.4rem; color: #888; text-transform: uppercase; margin-bottom: 40px; }
-
-        .authority {
-            padding: 60px 20px;
-            background: #050505;
-            text-align: center;
-            border-top: 1px solid #111;
-        }
-
-        .section-label { font-size: 0.5rem; letter-spacing: 0.3rem; color: #444; text-transform: uppercase; margin-bottom: 40px; }
+        /* Video de Fondo */
+        .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
+        #bg-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: -1; filter: brightness(0.4); object-fit: cover; }
         
-        .logo-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0.4;
-        }
+        h1 { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 200; letter-spacing: 0.8rem; text-transform: uppercase; }
+        .tagline { font-size: 0.7rem; letter-spacing: 0.4rem; color: #888; text-transform: uppercase; margin-top: 10px; }
 
-        .logo-item { font-size: 0.75rem; letter-spacing: 0.2rem; font-weight: bold; text-transform: uppercase; }
+        /* Logos de Autoridad */
+        .authority { padding: 60px 20px; background: #050505; text-align: center; border-top: 1px solid #111; }
+        .logo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; opacity: 0.4; margin-top: 20px; }
+        .logo-item { font-size: 0.7rem; letter-spacing: 0.2rem; font-weight: bold; text-transform: uppercase; }
 
-        .bio { padding: 80px 20px; max-width: 700px; margin: 0 auto; text-align: center; }
-        .bio p { font-size: 1rem; font-weight: 300; color: #aaa; letter-spacing: 0.03rem; font-style: italic; }
+        /* Biografía */
+        .bio { padding: 80px 20px; max-width: 750px; margin: 0 auto; text-align: center; color: #999; font-style: italic; font-size: 1.1rem; }
 
-        .btn {
-            margin-top: 30px;
-            display: inline-block;
-            padding: 12px 35px;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.6rem;
-            letter-spacing: 0.2rem;
-            transition: 0.5s;
-            text-transform: uppercase;
-        }
-
-        .btn:hover { background: #fff; color: #000; }
+        /* Galería de Videos */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .video-card { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border: 1px solid #222; }
+        .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; grayscale: 100%; transition: 0.5s; }
+        .video-card iframe:hover { filter: grayscale(0%); }
     </style>
 </head>
 <body>
 
     <section class="hero">
-        <h1>Andrés Zapata</h1>
-        <p class="tagline">Director • Cinematographer • Editor</p>
-        <a href="#work" class="btn">View Portfolio</a>
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="HeroBG4.mov" type="video/mp4">
+        </video>
+        <div>
+            <h1>Andrés Zapata</h1>
+            <p class="tagline">Director • Cinematographer • Editor</p>
+        </div>
     </section>
 
     <section class="authority">
-        <p class="section-label">Institutional Experience & Recognition</p>
+        <p style="font-size: 0.5rem; letter-spacing: 0.3rem; color: #444; text-transform: uppercase;">Institutional Experience & Recognition</p>
         <div class="logo-grid">
             <span class="logo-item">U.S. ARMY</span>
             <span class="logo-item">COLUMBIA UNIVERSITY</span>
             <span class="logo-item">EPA AWARDED</span>
             <span class="logo-item">TELEMUNDO</span>
+            <span class="logo-item">ANNE GEDDES SETS</span>
             <span class="logo-item">UNIVISION</span>
-            <span class="logo-item">YMCA</span>
         </div>
     </section>
 
     <section class="bio">
-        <p>"With over 25 years of experience in the New York film industry, Andrés Zapata has mastered the intersection of technical precision and human narrative. From federal recognitions by the EPA to high-level productions for Columbia University and the U.S. Army, his work is defined by an uncompromising commitment to cinematic excellence."</p>
+        <p>"With over 25 years in the New York film industry, Andrés Zapata excels at the intersection of technical mastery and human narrative. From federal recognition by the EPA to high-stakes handheld cinematography for institutions like the U.S. Army and Columbia University, his work is defined by cinematic excellence."</p>
     </section>
+
+    <section id="work" class="work-grid">
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/vQS23lQLUBg" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/DdCyRJfabzo" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/a60BLOOSero" frameborder="0" allowfullscreen></iframe></div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px; color: #333; font-size: 0.6rem; letter-spacing: 0.2rem;">
+        &copy; 2026 ANDRÉS ZAPATA FILM. ALL RIGHTS RESERVED.
+    </footer>
 
 </body>
 </html>
