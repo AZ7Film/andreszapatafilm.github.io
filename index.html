@@ -10,43 +10,59 @@
         
         /* Video de Fondo */
         .hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; }
-        #bg-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: -1; filter: brightness(0.45) contrast(1.1); object-fit: cover; }
+        #bg-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%); z-index: -1; filter: brightness(0.4) contrast(1.1); object-fit: cover; }
         
-        h1 { font-size: clamp(2.2rem, 9vw, 4rem); font-weight: 200; letter-spacing: 0.9rem; text-transform: uppercase; text-shadow: 0 0 20px rgba(0,0,0,0.5); }
-        .tagline { font-size: 0.7rem; letter-spacing: 0.5rem; color: #aaa; text-transform: uppercase; margin-top: 15px; }
+        h1 { font-size: clamp(2.2rem, 9vw, 4rem); font-weight: 200; letter-spacing: 0.9rem; text-transform: uppercase; }
+        .tagline { font-size: 0.7rem; letter-spacing: 0.5rem; color: #888; text-transform: uppercase; margin-top: 15px; }
 
         /* Logos de Autoridad */
         .authority { padding: 60px 20px; background: #050505; text-align: center; border-top: 1px solid #111; }
-        .section-label { font-size: 0.5rem; letter-spacing: 0.3rem; color: #333; text-transform: uppercase; margin-bottom: 40px; }
-        .logo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 35px; opacity: 0.35; max-width: 1000px; margin: 0 auto; }
-        .logo-item { font-size: 0.75rem; letter-spacing: 0.2rem; font-weight: bold; text-transform: uppercase; }
+        .logo-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 35px; opacity: 0.3; max-width: 1000px; margin: 0 auto; }
+        .logo-item { font-size: 0.7rem; letter-spacing: 0.2rem; font-weight: bold; text-transform: uppercase; }
 
         /* Biografía */
-        .bio { padding: 100px 20px; max-width: 800px; margin: 0 auto; text-align: center; color: #888; font-style: italic; font-size: 1.05rem; line-height: 2; }
+        .bio { padding: 100px 20px; max-width: 800px; margin: 0 auto; text-align: center; color: #777; font-style: italic; font-size: 1.05rem; line-height: 2; }
 
-        /* Galería de Videos */
-        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 40px; max-width: 1200px; margin: 0 auto; }
-        .video-card { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #111; border: 1px solid #1a1a1a; transition: 0.3s; }
-        .video-card:hover { border-color: #444; transform: translateY(-5px); }
-        .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: grayscale(1) contrast(1.1); transition: 0.6s ease; }
-        .video-card:hover iframe { filter: grayscale(0) contrast(1); }
+        /* Galería Estilo "Lente" */
+        .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .video-card { 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            overflow: hidden; 
+            border-radius: 20px; /* Aquí está el efecto redondeado */
+            border: 1px solid #222; 
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .video-card:hover { 
+            transform: scale(1.03); 
+            border-color: #555;
+            box-shadow: 0 15px 45px rgba(255,255,255,0.05);
+        }
+        .video-card iframe { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            filter: grayscale(1); 
+            transition: 0.8s ease; 
+        }
+        .video-card:hover iframe { filter: grayscale(0); }
 
-        /* Botón de Contacto */
-        .contact-section { padding: 120px 20px; text-align: center; background: #000; }
+        /* Botón de Contacto - Fix Mac Mail */
+        .contact-section { padding: 120px 20px; text-align: center; }
         .contact-btn { 
             display: inline-block; 
-            padding: 20px 50px; 
+            padding: 18px 45px; 
             border: 1px solid #fff; 
             color: #fff; 
             text-decoration: none; 
-            font-size: 0.8rem; 
+            font-size: 0.75rem; 
             letter-spacing: 0.4rem; 
             text-transform: uppercase; 
             transition: 0.4s; 
         }
-        .contact-btn:hover { background: #fff; color: #000; box-shadow: 0 0 30px rgba(255,255,255,0.2); }
+        .contact-btn:hover { background: #fff; color: #000; }
 
-        footer { text-align: center; padding: 60px; color: #222; font-size: 0.6rem; letter-spacing: 0.3rem; border-top: 1px solid #0a0a0a; }
+        footer { text-align: center; padding: 60px; color: #222; font-size: 0.5rem; letter-spacing: 0.3rem; }
     </style>
 </head>
 <body>
@@ -62,7 +78,6 @@
     </section>
 
     <section class="authority">
-        <p class="section-label">Institutional Experience & Recognition</p>
         <div class="logo-grid">
             <span class="logo-item">U.S. ARMY</span>
             <span class="logo-item">COLUMBIA UNIVERSITY</span>
@@ -75,13 +90,13 @@
     </section>
 
     <section class="bio">
-        <p>"With over 25 years in the New York film industry, Andrés Zapata excels at the intersection of technical mastery and human narrative. From federal recognition by the EPA to high-stakes handheld cinematography for institutions like the U.S. Army and Columbia University, his work is defined by cinematic excellence."</p>
+        <p>"With over 25 years in the New York film industry, Andrés Zapata excels at the intersection of technical mastery and human narrative. From federal recognition by the EPA to high-stakes productions for the U.S. Army and Columbia University, his work is defined by cinematic excellence."</p>
     </section>
 
-    <section id="work" class="work-grid">
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/vQS23lQLUBg" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/DdCyRJfabzo" frameborder="0" allowfullscreen></iframe></div>
-        <div class="video-card"><iframe src="https://www.youtube.com/embed/a60BLOOSero" frameborder="0" allowfullscreen></iframe></div>
+    <section class="work-grid">
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/vQS23lQLUBg?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/DdCyRJfabzo?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video-card"><iframe src="https://www.youtube.com/embed/a60BLOOSero?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe></div>
     </section>
 
     <section class="contact-section">
@@ -89,7 +104,7 @@
     </section>
 
     <footer>
-        &copy; 2026 ANDRÉS ZAPATA FILM. NEW YORK CITY. ALL RIGHTS RESERVED.
+        &copy; 2026 ANDRÉS ZAPATA FILM. NEW YORK CITY.
     </footer>
 
 </body>
