@@ -8,8 +8,8 @@
     
     <style>
         :root {
-            --accent: #ffffff; /* Blanco puro, nada de dorado */
             --white: #ffffff;
+            --off-white: #f4f4f4;
             --gray: #888;
             --dark-gray: #1a1a1a;
             --black: #000;
@@ -30,9 +30,9 @@
         @media (min-width: 1024px) {
             body { cursor: none; }
             .cursor { position: fixed; width: 6px; height: 6px; background: var(--white); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); transition: transform 0.1s; }
-            .cursor-ring { position: fixed; width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.2s ease-out; }
+            .cursor-ring { position: fixed; width: 30px; height: 30px; border: 1px solid rgba(255,255,255,0.4); border-radius: 50%; pointer-events: none; z-index: 9998; transform: translate(-50%, -50%); transition: all 0.2s ease-out; }
             a:hover ~ .cursor, button:hover ~ .cursor { transform: translate(-50%, -50%) scale(2); }
-            a:hover ~ .cursor-ring, button:hover ~ .cursor-ring { width: 45px; height: 45px; border-color: rgba(255,255,255,0.6); }
+            a:hover ~ .cursor-ring, button:hover ~ .cursor-ring { width: 45px; height: 45px; border-color: rgba(255,255,255,0.8); }
         }
 
         /* Nav */
@@ -64,20 +64,20 @@
         .bio-section p { font-size: 1.2rem; color: #aaa; font-style: italic; line-height: 1.9; margin-bottom: 25px; font-weight: 200; }
         .location-tag { font-size: 0.5rem; letter-spacing: 0.3rem; color: #555; text-transform: uppercase; }
 
-        /* Work Grid */
+        /* Work Grid - TITULOS CORREGIDOS (BLANCOS) */
         .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 50px; padding: 60px 40px; max-width: 1400px; margin: 0 auto; }
         .work-item { display: flex; flex-direction: column; gap: 15px; }
-        .work-label { font-size: 0.5rem; letter-spacing: 0.2rem; color: #777; text-transform: uppercase; border-left: 1px solid #444; padding-left: 12px; }
+        .work-label { font-size: 0.55rem; letter-spacing: 0.2rem; color: var(--off-white); text-transform: uppercase; border-left: 2px solid var(--white); padding-left: 12px; font-weight: 400; }
         
         .video-card { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 2px; border: 1px solid #1a1a1a; transition: 0.5s; background: #080808; }
         .video-card:hover { border-color: #555; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         
-        /* Glow Blanco - "Brisa de Luz" Anclada Perfectamente */
+        /* Glow Blanco - "Brisa de Luz" (Coordenadas ajustadas para YouTube) */
         .channel-glow { 
-            position: absolute; top: 12px; left: 14px; width: 44px; height: 44px; border-radius: 50%; 
+            position: absolute; top: 10px; left: 10px; width: 44px; height: 44px; border-radius: 50%; 
             pointer-events: none; z-index: 10; opacity: 0; transition: 0.5s;
             background: conic-gradient(from 0deg, transparent 0%, transparent 60%, rgba(255,255,255,0.8) 90%, transparent 100%);
-            mask: radial-gradient(circle, transparent 58%, black 62%); -webkit-mask: radial-gradient(circle, transparent 58%, black 62%);
+            mask: radial-gradient(circle, transparent 55%, black 60%); -webkit-mask: radial-gradient(circle, transparent 55%, black 60%);
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
         .video-card:hover .channel-glow { opacity: 1; animation: spin 1.5s linear infinite; }
