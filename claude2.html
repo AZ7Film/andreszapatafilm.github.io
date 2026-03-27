@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andrés Zapata | NYC Director & Cinematographer</title>
+    <meta name="description" content="Interpreting vision and translating it into cinematic presence. Andrés Zapata delivers high-end film production in NYC for institutions, brands, and ambitious stories.">
+    <meta property="og:title" content="Andrés Zapata | NYC Director & DP">
+    <meta property="og:description" content="Delivering cinematic precision at every scale.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;0,400;1,200;1,300&family=Helvetica+Neue:wght@100;200;300&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --gold: #B8964E;
+            --gold-dim: rgba(184,150,78,0.15);
+            --white: #ffffff;
+            --off-white: #e8e8e8;
+            --gray: #777;
+            --dark-gray: #333;
+            --black: #000;
+            --near-black: #050505;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body { 
+            background-color: var(--black); 
+            color: var(--white); 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            font-weight: 200;
+            line-height: 1.6; 
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease;
+            transform: translate(-50%, -50%);
+        }
+        .cursor-ring {
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            border: 1px solid rgba(184,150,78,0.4);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.4s ease, width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+        body:hover .cursor { opacity: 1; }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 28px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+        }
+        .nav-logo {
+            font-size: 0.6rem;
+            letter-spacing: 0.4rem;
+            text-transform: uppercase;
+            color: var(--off-white);
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.55rem;
+            letter-spacing: 0.25rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero */
+        .hero { 
+            position: relative; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            overflow: hidden; 
+            background: #000; 
+        }
+        .hero::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            background: rgba(0,0,0,0.45); 
+            z-index: 1; 
+        }
+        #bg-video { 
+            position: absolute; 
+            top: 50%; left: 50%; 
+            min-width: 100%; min-height: 100%; 
+            transform: translate(-50%, -50%); 
+            z-index: 0; 
+            object-fit: cover; 
+        }
+        .hero-content { 
+            position: relative; 
+            z-index: 2;
+            animation: fadeUp 1.8s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h1 { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 10vw, 6rem); 
+            font-weight: 200; 
+            letter-spacing: 0.8rem; 
+            text-transform: uppercase; 
+            color: var(--white);
+        }
+        .tagline { 
+            font-size: 0.55rem; 
+            letter-spacing: 0.5rem; 
+            color: var(--gold); 
+            text-transform: uppercase; 
+            margin-top: 20px; 
+        }
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            animation: fadeUp 2s ease 1.2s forwards;
+        }
+        .hero-scroll span {
+            font-size: 0.45rem;
+            letter-spacing: 0.3rem;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 1; transform: scaleY(1.1); }
+        }
+
+        /* Authority */
+        .authority { 
+            padding: 70px 20px; 
+            background: var(--near-black); 
+            text-align: center; 
+            border-top: 1px solid #111;
+            border-bottom: 1px solid #111;
+        }
+        .authority-label {
+            font-size: 0.45rem;
+            letter-spacing: 0.35rem;
+            color: #444;
+            text-transform: uppercase;
+            margin-bottom: 35px;
+        }
+        .logo-grid { 
+            display: flex; 
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 40px; 
+            opacity: 0.25; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+        }
+        .logo-item { 
+            font-size: 0.6rem; 
+            letter-spacing: 0.25rem; 
+            font-weight: 300; 
+            text-transform: uppercase; 
+            transition: opacity 0.3s;
+        }
+        .logo-grid:hover .logo-item { opacity: 0.4; }
+        .logo-grid .logo-item:hover { opacity: 1 !important; color: var(--gold); }
+
+        /* Bio */
+        .bio-section { 
+            padding: 140px 20px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .bio-image {
+            position: relative;
+        }
+        .bio-image img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            object-position: center top;
+            filter: grayscale(0.3);
+        }
+        .bio-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px solid var(--gold-dim);
+            z-index: -1;
+        }
+        .bio-image-label {
+            position: absolute;
+            bottom: -20px;
+            right: 0;
+            font-size: 0.45rem;
+            letter-spacing: 0.25rem;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .bio-text { text-align: left; }
+        .bio-eyebrow {
+            font-size: 0.5rem;
+            letter-spacing: 0.35rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .bio-quote { 
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 200;
+            font-style: italic;
+            color: var(--off-white);
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+        .bio-body {
+            font-size: 0.75rem;
+            color: var(--gray);
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+        .bio-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 35px;
+        }
+        .bio-stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 200;
+            color: var(--gold);
+            display: block;
+        }
+        .bio-stat-label {
+            font-size: 0.45rem;
+            letter-spacing: 0.2rem;
+            color: var(--gray);
+            text-transform: uppercase;
+        }
+        .location-tag { 
+            font-size: 0.5rem; 
+            letter-spacing: 0.25rem; 
+            color: #555; 
+            text-transform: uppercase; 
+            margin-top: 25px;
+            display: block;
+        }
+
+        /* Section Divider */
+        .section-header {
+            text-align: center;
+            padding: 0 20px 60px;
+        }
+        .section-label {
+            font-size: 0.5rem;
+            letter-spacing: 0.4rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 200;
+            color: var(--off-white);
+            letter-spacing: 0.1rem;
+        }
+
+        /* Projects */
+        .projects-section {
+            padding: 100px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid #111;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3px;
+            margin-top: 60px;
+        }
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            cursor: pointer;
+        }
+        .project-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(0.7) brightness(0.6);
+            transition: all 0.7s ease;
+        }
+        .project-card:hover img {
+            filter: grayscale(0) brightness(0.8);
+            transform: scale(1.05);
+        }
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 25px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+        .project-card:hover .project-overlay { transform: translateY(0); }
+        .project-role {
+            font-size: 0.45rem;
+            letter-spacing: 0.25rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .project-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 200;
+            color: var(--white);
+            letter-spacing: 0.05rem;
+        }
+        .project-year {
+            font-size: 0.45rem;
+            letter-spacing: 0.2rem;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* Work Videos */
+        .work-section {
+            padding: 100px 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+            border-top: 1px solid #111;
+        }
+        .work-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .work-item { display: flex; flex-direction: column; gap: 15px; }
+        .work-label { 
+            font-size: 0.48rem; 
+            letter-spacing: 0.2rem; 
+            color: #555; 
+            text-transform: uppercase; 
+            border-left: 1px solid var(--gold-dim); 
+            padding-left: 12px; 
+        }
+        .video-card { 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            overflow: hidden; 
+            border-radius: 2px; 
+            border: 1px solid #1a1a1a; 
+            transition: all 0.5s ease; 
+        }
+        .video-card:hover { border-color: #333; transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .channel-glow { 
+            position: absolute; 
+            top: 10px; left: 14px; 
+            width: 44px; height: 44px; 
+            border-radius: 50%; 
+            pointer-events: none; 
+            z-index: 10; 
+            opacity: 0; 
+            transition: opacity 0.4s ease; 
+        }
+        .channel-glow::after { 
+            content: ''; 
+            position: absolute; 
+            top: 0; left: 0; right: 0; bottom: 0; 
+            border-radius: 50%; 
+            border: 2px solid transparent; 
+            border-top-color: rgba(184,150,78,0.9); 
+            border-right-color: rgba(184,150,78,0.2); 
+            animation: spin 1.2s linear infinite; 
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .video-card:hover .channel-glow { opacity: 1; }
+        .video-card iframe { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
+            filter: grayscale(1); 
+            transition: 0.8s ease; 
+            z-index: 1; 
+        }
+        .video-card:hover iframe { filter: grayscale(0); }
+
+        /* Gallery */
+        .gallery-section { 
+            padding: 100px 40px; 
+            max-width: 1300px; 
+            margin: 0 auto; 
+            border-top: 1px solid #111; 
+        }
+        .gallery-filters {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            margin: 40px 0 50px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: none;
+            border: 1px solid #1a1a1a;
+            color: var(--gray);
+            padding: 8px 22px;
+            font-size: 0.48rem;
+            letter-spacing: 0.25rem;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .gallery-grid { 
+            column-count: 3; 
+            column-gap: 12px; 
+        }
+        @media (max-width: 900px) { .gallery-grid { column-count: 2; } }
+        @media (max-width: 600px) { .gallery-grid { column-count: 1; } }
+        .gallery-item { 
+            break-inside: avoid; 
+            margin-bottom: 12px; 
+            overflow: hidden; 
+            position: relative; 
+            border: 1px solid #0d0d0d; 
+        }
+        .gallery-item img { 
+            width: 100%; 
+            display: block; 
+            filter: grayscale(1) brightness(0.85); 
+            transition: 0.6s ease; 
+        }
+        .gallery-item:hover img { 
+            filter: grayscale(0) brightness(1); 
+            transform: scale(1.03); 
+        }
+        .gallery-item.hidden { display: none; }
+
+        /* Contact */
+        .contact-section { 
+            padding: 140px 20px; 
+            text-align: center;
+            border-top: 1px solid #111;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-section::before {
+            content: 'CONTACT';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(6rem, 20vw, 16rem);
+            font-weight: 200;
+            color: #0a0a0a;
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: 1rem;
+        }
+        .contact-inner { position: relative; z-index: 1; }
+        .contact-eyebrow {
+            font-size: 0.5rem;
+            letter-spacing: 0.4rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            display: block;
+        }
+        .contact-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 200;
+            font-style: italic;
+            color: var(--off-white);
+            margin-bottom: 50px;
+            line-height: 1.4;
+        }
+        .contact-btn { 
+            display: inline-block; 
+            padding: 18px 60px; 
+            border: 1px solid var(--white); 
+            color: var(--white); 
+            text-decoration: none; 
+            font-size: 0.6rem; 
+            letter-spacing: 0.5rem; 
+            text-transform: uppercase; 
+            transition: 0.4s; 
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--white);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        .contact-btn:hover::before { left: 0; }
+        .contact-btn:hover { color: var(--black); }
+        .availability { 
+            font-size: 0.5rem; 
+            letter-spacing: 0.2rem; 
+            color: #555; 
+            text-transform: uppercase; 
+            margin-top: 35px; 
+        }
+        .social-links { 
+            display: flex; 
+            justify-content: center; 
+            gap: 25px; 
+            margin-top: 60px; 
+            opacity: 0.35; 
+        }
+        .social-links a { 
+            color: var(--white); 
+            text-decoration: none; 
+            font-size: 0.5rem; 
+            letter-spacing: 0.2rem; 
+            text-transform: uppercase; 
+            transition: opacity 0.3s, color 0.3s;
+        }
+        .social-links a:hover { opacity: 1; color: var(--gold); }
+        .social-links span { color: #333; }
+
+        footer { 
+            text-align: center; 
+            padding: 50px 20px; 
+            color: #222; 
+            font-size: 0.45rem; 
+            letter-spacing: 0.3rem; 
+            border-top: 1px solid #0a0a0a; 
+            text-transform: uppercase; 
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            nav { padding: 20px 25px; }
+            .nav-links { display: none; }
+            .bio-section { grid-template-columns: 1fr; gap: 50px; }
+            .bio-image { display: none; }
+            .bio-text { text-align: center; }
+            .bio-stats { grid-template-columns: repeat(3,1fr); }
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <nav>
+        <a href="#" class="nav-logo">AZ7Film</a>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#stills">Stills</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <video autoplay muted loop playsinline id="bg-video" poster="https://images.unsplash.com/photo-1492691523569-de8128ee7303?q=80&w=2070">
+            <source src="HeroBG4.mov" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>Andrés Zapata</h1>
+            <p class="tagline">Director &nbsp;•&nbsp; Cinematographer &nbsp;•&nbsp; Editor</p>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- AUTHORITY -->
+    <section class="authority">
+        <p class="authority-label">Trusted By</p>
+        <div class="logo-grid">
+            <span class="logo-item">Jack Daniel's</span>
+            <span class="logo-item">Columbia University</span>
+            <span class="logo-item">Concha y Toro</span>
+            <span class="logo-item">NYC Government — BPCA</span>
+            <span class="logo-item">U.S. Army</span>
+            <span class="logo-item">Korbel</span>
+            <span class="logo-item">The Wings Club</span>
+            <span class="logo-item">Telemundo</span>
+        </div>
+    </section>
+
+    <!-- BIO -->
+    <section class="bio-section reveal" id="about">
+        <div class="bio-image">
+            <img src="IMG_9856.JPG" alt="Andrés Zapata — Director of Photography on set">
+            <span class="bio-image-label">On Set — Mortales Series</span>
+        </div>
+        <div class="bio-text">
+            <span class="bio-eyebrow">About</span>
+            <p class="bio-quote">"Interpreting vision and translating it into cinematic presence."</p>
+            <p class="bio-body">With over 25 years behind the lens in New York City, Andrés Zapata has built a career on the kind of instinct that can't be taught — forged through hundreds of productions, every condition imaginable, and an uncompromising eye for light, composition, and human truth.<br><br>From institutional documentaries to narrative short films, commercial campaigns to independent cinema, Andrés delivers visual excellence at every scale.</p>
+            <div class="bio-stats">
+                <div>
+                    <span class="bio-stat-num">25+</span>
+                    <span class="bio-stat-label">Years in NYC</span>
+                </div>
+                <div>
+                    <span class="bio-stat-num">EPA</span>
+                    <span class="bio-stat-label">Federal Recognition</span>
+                </div>
+                <div>
+                    <span class="bio-stat-num">RED</span>
+                    <span class="bio-stat-label">Scarlet Mysterium X</span>
+                </div>
+            </div>
+            <span class="location-tag">Based in New York City &bull; Working Globally</span>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects-section reveal" id="projects">
+        <div class="section-header">
+            <span class="section-label">Selected Work</span>
+            <h2 class="section-title">Projects</h2>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="IMG_0331.JPG" alt="Mortales Series">
+                <div class="project-overlay">
+                    <p class="project-role">Director of Photography</p>
+                    <h3 class="project-name">Mortales</h3>
+                    <p class="project-year">Narrative Series &bull; New York</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="IMG_7745.JPG" alt="Keep You Safe">
+                <div class="project-overlay">
+                    <p class="project-role">DP & Editor — Frenzy Film Festival</p>
+                    <h3 class="project-name">Keep You Safe</h3>
+                    <p class="project-year">Short Film &bull; Official Selection</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="IMG_0314.JPG" alt="Commercial Work">
+                <div class="project-overlay">
+                    <p class="project-role">Director & Cinematographer</p>
+                    <h3 class="project-name">Commercial & Brand</h3>
+                    <p class="project-year">Jack Daniel's &bull; Korbel &bull; Concha y Toro</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="IMG_9972.JPG" alt="Nobody Lives Upstairs">
+                <div class="project-overlay">
+                    <p class="project-role">Director of Photography</p>
+                    <h3 class="project-name">Nobody Lives Upstairs</h3>
+                    <p class="project-year">Short Film &bull; Best Script — Frenzy 2021</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section class="work-section reveal" id="work">
+        <div class="section-header">
+            <span class="section-label">Cinematography</span>
+            <h2 class="section-title">Featured Films</h2>
+        </div>
+        <div class="work-grid">
+            <div class="work-item">
+                <span class="work-label">Commissioned Narrative &bull; Brand Story</span>
+                <div class="video-card">
+                    <div class="channel-glow"></div>
+                    <iframe src="https://www.youtube.com/embed/_ZAWoywhCXI?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="work-item">
+                <span class="work-label">Institutional Film &bull; Urban Narrative</span>
+                <div class="video-card">
+                    <div class="channel-glow"></div>
+                    <iframe src="https://www.youtube.com/embed/a60BLOOSero?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="work-item">
+                <span class="work-label">Cinematic Study &bull; The Blue Hour, NYC</span>
+                <div class="video-card">
+                    <div class="channel-glow"></div>
+                    <iframe src="https://www.youtube.com/embed/DdCyRJfabzo?modestbranding=1&rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery-section reveal" id="stills">
+        <div class="section-header">
+            <span class="section-label">Still Narratives</span>
+            <h2 class="section-title">Behind The Frame</h2>
+        </div>
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="narrative">Narrative</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="portrait">Portrait</button>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="narrative"><img src="Foto del Episodio Sera.jpg" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="portrait"><img src="IMG_0092.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="portrait"><img src="IMG_0143.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_0293.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_0314.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="portrait"><img src="IMG_0331.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="commercial"><img src="IMG_0496.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_0709.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_1140.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="commercial"><img src="IMG_1335.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_2670.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_4333.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_6872.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_7039.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="portrait"><img src="IMG_7120.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_7619.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_7720.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_7745.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_7945.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_9786.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_9856.JPG" alt="Andrés Zapata — DP on set" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_9858.JPG" alt="Still Narrative" loading="lazy"></div>
+            <div class="gallery-item" data-category="narrative"><img src="IMG_9972.JPG" alt="Still Narrative" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" id="contact">
+        <div class="contact-inner">
+            <span class="contact-eyebrow">Let's Create</span>
+            <h2 class="contact-title">Every great film begins<br>with a conversation.</h2>
+            <a href="mailto:contact@andreszapatafilm.com" class="contact-btn">Start a Collaboration</a>
+            <p class="availability">Available for commercial, documentary & narrative work</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/andreszapatafilm/" target="_blank">Instagram</a>
+                <span>&bull;</span>
+                <a href="https://www.pond5.com/artist/andreszapata007" target="_blank">Pond5</a>
+                <span>&bull;</span>
+                <a href="https://www.shutterstock.com/g/Andres_Z" target="_blank">Shutterstock</a>
+                <span>&bull;</span>
+                <a href="tel:+15164950152">+1 (516) 495-0152</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 Andrés Zapata Film &bull; AZ7Film &bull; New York City &bull; All Rights Reserved
+    </footer>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursorRing');
+        let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.12;
+            ringY += (mouseY - ringY) * 0.12;
+            ring.style.left = ringX + 'px';
+            ring.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        document.querySelectorAll('a, button, .project-card, .gallery-item').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(2)';
+                ring.style.width = '50px';
+                ring.style.height = '50px';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                ring.style.width = '32px';
+                ring.style.height = '32px';
+            });
+        });
+
+        // Gallery Filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeUp 0.5s ease forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Scroll Reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        revealEls.forEach(el => observer.observe(el));
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(0,0,0,0.95)';
+                nav.style.borderBottom = '1px solid #111';
+            } else {
+                nav.style.background = 'linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%)';
+                nav.style.borderBottom = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
