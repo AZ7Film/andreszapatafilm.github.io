@@ -1,0 +1,260 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrés Zapata | Director</title>
+
+<style>
+:root{
+--black:#020202;
+--white:#ffffff;
+--gray:#777;
+--gold:#B8964E;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+background:var(--black);
+color:var(--white);
+font-family:Helvetica, Arial, sans-serif;
+font-weight:200;
+overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:25px 40px;
+display:flex;
+justify-content:space-between;
+z-index:100;
+background:linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+}
+nav a{
+color:var(--gray);
+text-decoration:none;
+font-size:10px;
+letter-spacing:3px;
+text-transform:uppercase;
+}
+nav a:hover{color:var(--white);}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+.hero video{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+}
+.hero-content{
+position:relative;
+z-index:2;
+}
+h1{
+font-size:clamp(2.5rem,8vw,5rem);
+letter-spacing:1rem;
+font-weight:200;
+}
+.tagline{
+margin-top:20px;
+font-size:10px;
+letter-spacing:6px;
+color:var(--gold);
+}
+
+/* AUTHORITY */
+.authority{
+padding:80px 20px;
+text-align:center;
+border-top:1px solid #111;
+border-bottom:1px solid #111;
+}
+.logo-grid{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+opacity:0.18;
+}
+.logo-grid span{
+font-size:10px;
+letter-spacing:3px;
+}
+
+/* BIO */
+.bio{
+padding:140px 20px;
+text-align:center;
+max-width:800px;
+margin:auto;
+}
+.bio-quote{
+font-size:1.6rem;
+font-style:italic;
+margin-bottom:30px;
+}
+.bio-text{
+color:var(--gray);
+line-height:1.8;
+}
+
+/* WORK */
+.work{
+padding:100px 40px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:40px;
+}
+.video{
+position:relative;
+padding-bottom:56.25%;
+}
+.video iframe{
+position:absolute;
+width:100%;
+height:100%;
+filter:grayscale(1);
+transition:0.8s;
+}
+.video:hover iframe{
+filter:grayscale(0);
+}
+
+/* GALLERY */
+.gallery{
+padding:100px 40px;
+column-count:3;
+column-gap:15px;
+}
+.gallery img{
+width:100%;
+margin-bottom:15px;
+filter:grayscale(1);
+transition:0.6s;
+}
+.gallery img:hover{
+filter:grayscale(0);
+transform:scale(1.02);
+}
+
+/* CONTACT */
+.contact{
+padding:140px 20px;
+text-align:center;
+border-top:1px solid #111;
+}
+.contact p{
+margin-bottom:30px;
+color:var(--gray);
+}
+.contact a{
+border:1px solid var(--white);
+padding:18px 50px;
+text-decoration:none;
+color:var(--white);
+letter-spacing:4px;
+font-size:11px;
+}
+.contact a:hover{
+background:var(--white);
+color:var(--black);
+}
+
+footer{
+padding:50px;
+text-align:center;
+font-size:10px;
+color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#">AZ</a>
+<a href="#work">Work</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<section class="hero">
+<video autoplay muted loop>
+<source src="HeroBG4.mov">
+</video>
+<div class="hero-content">
+<h1>Andrés Zapata</h1>
+<p class="tagline">I translate vision into presence</p>
+</div>
+</section>
+
+<section class="authority">
+<div class="logo-grid">
+<span>Jack Daniel's</span>
+<span>Columbia University</span>
+<span>Telemundo</span>
+<span>U.S. Army</span>
+</div>
+</section>
+
+<section class="bio">
+<p class="bio-quote">
+“I don’t chase images. I reveal what’s already there.”
+</p>
+<p class="bio-text">
+25+ years in New York. Narrative, commercial, and documentary work 
+guided by instinct, precision, and emotional clarity.
+</p>
+</section>
+
+<section class="work" id="work">
+<div class="video">
+<iframe src="https://www.youtube.com/embed/_ZAWoywhCXI" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/a60BLOOSero" frameborder="0" allowfullscreen></iframe>
+</div>
+<div class="video">
+<iframe src="https://www.youtube.com/embed/DdCyRJfabzo" frameborder="0" allowfullscreen></iframe>
+</div>
+</section>
+
+<section class="gallery">
+<img src="IMG_0314.JPG">
+<img src="IMG_0331.JPG">
+<img src="IMG_7745.JPG">
+<img src="IMG_9856.JPG">
+</section>
+
+<section class="contact" id="contact">
+<p>Not every project is a fit. But when it is, it matters.</p>
+<a href="mailto:contact@andreszapatafilm.com">
+START SOMETHING MEANINGFUL
+</a>
+</section>
+
+<footer>
+© 2026 Andrés Zapata — NYC
+</footer>
+
+</body>
+</html>
+```
