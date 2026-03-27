@@ -33,18 +33,19 @@
         .bio p { color: #888; font-style: italic; font-size: 1.15rem; line-height: 1.9; margin-bottom: 25px; }
         .location-tag { font-size: 0.55rem; letter-spacing: 0.3rem; color: #888; text-transform: uppercase; }
 
-        /* Work Grid & Efecto del Logo de YouTube */
+        /* Work Grid & Efecto del Haz de Luz Giratorio */
         .work-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; padding: 60px 40px; max-width: 1300px; margin: 0 auto; }
         .work-item { display: flex; flex-direction: column; gap: 15px; }
         .work-label { font-size: 0.55rem; letter-spacing: 0.2rem; color: #555; text-transform: uppercase; border-left: 1px solid #333; padding-left: 10px; }
         
         .video-card { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 20px; border: 1px solid #1a1a1a; transition: all 0.5s ease; }
-        
         .video-card:hover { border-color: #333; transform: translateY(-5px); }
         
-        /* El "Truco" del Destello en el Logo de YouTube (Esquina superior izquierda) */
-        .channel-glow { position: absolute; top: 12px; left: 16px; width: 40px; height: 40px; border-radius: 50%; pointer-events: none; z-index: 10; transition: all 0.6s ease; }
-        .video-card:hover .channel-glow { box-shadow: 0 0 25px 8px rgba(255, 255, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2); background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%); }
+        /* Efecto Anillo Giratorio en el Logo de YouTube */
+        .channel-glow { position: absolute; top: 10px; left: 14px; width: 44px; height: 44px; border-radius: 50%; pointer-events: none; z-index: 10; opacity: 0; transition: opacity 0.4s ease; }
+        .channel-glow::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 50%; border: 2px solid transparent; border-top-color: rgba(255, 255, 255, 0.9); border-right-color: rgba(255, 255, 255, 0.2); animation: spin 1.2s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .video-card:hover .channel-glow { opacity: 1; }
 
         .video-card iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; filter: grayscale(1); transition: 0.8s ease; z-index: 1; }
         .video-card:hover iframe { filter: grayscale(0); }
@@ -132,7 +133,7 @@
     <section class="gallery-section">
         <h2 class="gallery-title">Still Narratives & Behind The Scenes</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="Foto_del_Episodio_Sera.jpg" alt="Andrés Zapata Still Narrative" loading="lazy"></div>
+            <div class="gallery-item"><img src="Foto del Episodio Sera.jpg" alt="Andrés Zapata Still Narrative" loading="lazy"></div>
             <div class="gallery-item"><img src="IMG_0092.JPG" alt="Andrés Zapata Still Narrative" loading="lazy"></div>
             <div class="gallery-item"><img src="IMG_0143.JPG" alt="Andrés Zapata Still Narrative" loading="lazy"></div>
             <div class="gallery-item"><img src="IMG_0293.JPG" alt="Andrés Zapata Still Narrative" loading="lazy"></div>
